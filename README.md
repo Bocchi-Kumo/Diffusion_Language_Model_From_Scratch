@@ -42,7 +42,7 @@ I implemented the **Score Entropy loss** specifically for the absorbing case:
 ### 4. Parallel Inference Loop
 I built a parallel inference (sampling) loop that can unmask **multiple tokens per step**. At each denoising step, the model selects the most confident masked positions and fills them in parallel.
 
-**Code**: [`basics/inference_simple.py`](basics/inference_simple.py#L8)
+**Code**: [`inference_simple`](basics/inference_simple.py#L8)
 
 ## Current Limitations
 
