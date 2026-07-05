@@ -2,7 +2,7 @@
 
 ## Project Goal
 This project is my implementation of a discrete diffusion language model inspired by the paper  
-**["Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution"](Discrete%20Diffusion%20Modeling%20by%20Estimating%20the%20Ratios%20of%20the%20Data%20Distribution.pdf)** (arXiv:2310.16834, SEDD).
+**Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution** (arXiv:2310.16834, SEDD).
 
 The goal is to build a diffusion-based language model from scratch, understand the Score Entropy loss, and explore its potential for supervised fine-tuning (SFT) and reinforcement learning (RL).
 
