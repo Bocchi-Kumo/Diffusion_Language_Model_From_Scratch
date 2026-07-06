@@ -1,5 +1,0 @@
-source ~/myenv/bin/activate
-
-cd /mnt/e/Data/OneDrive/Data/Code/Python/Diffusion_model
-
-python -m basics.run_scripts.train_run
