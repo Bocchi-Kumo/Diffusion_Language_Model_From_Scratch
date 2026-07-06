@@ -65,7 +65,7 @@ I plan to implement SFT in the following way:
 - Concatenate prompt and response into one sequence as `x_0`.
 - During the forward diffusion process, **only mask tokens in the response part** (keep prompt tokens visible).
 - Compute the Score Entropy loss **only on the masked (response) positions**.
-- This way the model learns to generate responses conditioned on the prompt, similar to instruction tuning but in the diffusion framework.
+- This way the model learns to generate responses conditioned on the prompt.
 
 I believe SFT for diffusion LM is conceptually close to pre-training, but the key difference is the selective masking strategy on the target portion.
 
