@@ -44,32 +44,7 @@ I built a parallel inference (sampling) loop that can unmask **multiple tokens p
 
 **Code**: [`inference_simple`](basics/inference_simple.py#L8)
 
-## Current Limitations
-
-- The inference strategy uses a fixed number of tokens to unmask per step. An adaptive confidence-based strategy has not been implemented yet.
-- Supervised Fine-Tuning (SFT) has not been implemented yet.
-- Reinforcement Learning exploration has no idea.
-
-## Planned Next Steps
-
-### 1. Adaptive Confidence-Based Inference Strategy
-I have already implemented a parallel unmasking inference loop that can unmask multiple tokens at each denoising step. The next improvement is to make the number of tokens unmasked **adaptive** based on the model's own confidence:
-
-- **Confidence-aware scheduling**: Instead of using a fixed number of tokens to unmask per step, the model should dynamically decide how many tokens to generate based on its prediction confidence.
-- **High confidence → more tokens**: When the model is confident about its predictions (e.g., high probability mass on top predictions), it should unmask more tokens in parallel, accelerating generation.
-- **Low confidence → fewer tokens**: When the model is uncertain (e.g., flat probability distribution), it should unmask fewer tokens or even skip a step, allowing the diffusion process to provide more gradual refinement.
-- This approach could potentially replace or augment traditional noise schedules with a data-driven, model-guided strategy that adapts to the difficulty of each generation step.
-
-### 2. Supervised Fine-Tuning (SFT)
-I plan to implement SFT in the following way:
-- Concatenate prompt and response into one sequence as `x_0`.
-- During the forward diffusion process, **only mask tokens in the response part** (keep prompt tokens visible).
-- Compute the Score Entropy loss **only on the masked (response) positions**.
-- This way the model learns to generate responses conditioned on the prompt.
-
-I believe SFT for diffusion LM is conceptually close to pre-training, but the key difference is the selective masking strategy on the target portion.
-
 ## Summary
-I have built the core components of a discrete diffusion language model from scratch, including the model, absorbing forward process, and Score Entropy loss. The next critical steps are improving the inference loop and implementing SFT to demonstrate the model's practical capability.
+I have built the core components of a discrete diffusion language model from scratch, including the model, absorbing forward process, and Score Entropy loss.
 
 This project serves as both a technical exercise to deeply understand the SEDD paper and a foundation for exploring new architectures for diffusion large language models.
